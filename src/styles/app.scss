@@ -1,3 +1,7 @@
 // General
-@use 'variables';
+@import 'variables';
 @import 'base-reset';
+
+// Components
+@import 'c-header';
+@import 'c-footer';

@@ -3,6 +3,10 @@ import GlobalContext from '@/context/GlobalContext';
 
 import Head from 'next/head'
 
+// Components
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+
 export default function Home() {
   const { 
      globalBillsBalance,
@@ -20,7 +24,8 @@ export default function Home() {
       
       <main className="main">
         <div className="page-wrapper">
-          <h1>Home Page</h1>
+          <Header />
+          <Footer />
         </div>
       </main>
     </>
