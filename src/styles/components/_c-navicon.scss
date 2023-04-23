@@ -1,0 +1,54 @@
+// Navicon component 
+.c-navicon {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  
+  &.is-active {
+    .c-navicon__bar {
+      &:nth-child(1) {
+        transform: rotate(45deg);  
+        top: 8px;
+      }
+      
+      &:nth-child(2) {
+        transform: translateX(30px);
+        opacity: 0;
+        visibility: hidden;
+      }
+      
+      &:nth-child(3) {
+        width: 35px;
+        transform: rotate(-45deg);  
+        top: -10px;
+      }
+    }
+  }
+  
+  &:hover {
+    .c-navicon__bar {
+      background-color: $c-blue-dark;
+    }
+  }
+  
+  &__bar {
+    display: block;
+    width: 35px;
+    height: 3px;
+    margin-bottom: 6px;
+    background-color: #fff;
+    position: relative;
+    transition: all 0.2s ease;
+    
+    &:nth-child(2) {
+      width: 25px;
+    }
+    
+    &:nth-child(3) {
+      width: 15px;
+    }
+  }
+}
