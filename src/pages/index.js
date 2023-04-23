@@ -25,6 +25,7 @@ export default function Home() {
       <main className="main">
         <div className="page-wrapper">
           <Header />
+          <button className="button button__primary">Button primary</button>
           <Footer />
         </div>
       </main>

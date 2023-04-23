@@ -1,7 +1,12 @@
-// General
+// Global
+@import 'global/reset';
+
+// Base
+@import 'base/colors';
+@import 'base/fonts';
+@import 'base/buttons';
 @import 'variables';
-@import 'base-reset';
 
 // Components
-@import 'c-header';
-@import 'c-footer';
+@import 'components/c-header';
+@import 'components/c-footer';
