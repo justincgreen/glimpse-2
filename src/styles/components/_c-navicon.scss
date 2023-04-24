@@ -21,7 +21,6 @@
       }
       
       &:nth-child(3) {
-        width: 35px;
         transform: rotate(-45deg);  
         top: -10px;
       }
@@ -42,13 +41,5 @@
     background-color: #fff;
     position: relative;
     transition: all 0.2s ease;
-    
-    &:nth-child(2) {
-      width: 25px;
-    }
-    
-    &:nth-child(3) {
-      width: 15px;
-    }
   }
 }

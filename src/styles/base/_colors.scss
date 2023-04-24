@@ -2,8 +2,8 @@
 $c-blue: #55d4da;
 $c-blue-med: #0190d4;
 $c-blue-dark: #0075ad;
-$c-white: #ffffff;
-$c-black: #242424;
+$c-white: #fffdf7;
+$c-black: #1b1c1d;
 $c-black-light: #353333;
 $c-black-lightest: #555252;
 $c-green: #00a862;
@@ -12,8 +12,8 @@ $c-red: #ff4c47;
 // Text colors
 $t-green: #00ff06;
 $t-red: #ff4c47;
-$t-white: #ffffff;
-$t-black: #242424;
+$t-white: $c-white;
+$t-black: $c-black;
 
 // Button colors
 $button-primary: $c-blue;

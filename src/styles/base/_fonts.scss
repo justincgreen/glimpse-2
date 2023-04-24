@@ -1,4 +1,9 @@
 // Fonts 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+
+$font-primary: 'Roboto', sans-serif;
+
+// Font sizes
 $font-size-xxs: 12px;
 $font-size-xs: 14px;
 $font-size-sm: 16px;
@@ -6,3 +11,8 @@ $font-size-md: 20px;
 $font-size-l: 30px;
 $font-size-xl: 40px;
 $font-size-xxl: 60px;
+
+// Font weights 
+$font-weight-100: 100;
+$font-weight-300: 300;
+$font-weight-400: 400;

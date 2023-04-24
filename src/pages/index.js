@@ -7,6 +7,7 @@ import Head from 'next/head'
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Navicon from '@/components/Navicon';
+import Navigation from '@/components/Navigation';
 
 export default function Home() {
   const { 
@@ -24,10 +25,10 @@ export default function Home() {
       </Head>
       
       <main className="main">
-        <div className="page-wrapper">
-          <Header />
-          <button className="button button--primary">Button primary</button>
-          
+        <Navigation />
+        
+        <div className="page-wrapper">        
+          <Header />          
           <Navicon />
           <Footer />
         </div>

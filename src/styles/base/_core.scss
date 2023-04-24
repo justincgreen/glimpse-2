@@ -1,0 +1,25 @@
+// Core App UI
+body {  
+  background-color: $c-white;
+  color: $t-black;
+  font-family: $font-primary;
+  font-weight: $font-weight-300;
+}
+
+.page-wrapper {
+  background-color: $c-black;
+  color: $c-white;
+  min-height: 100vh;
+  position: relative;
+  z-index: 2;
+  box-shadow: -11px 0 5px -5px rgba(0,0,0,.2);
+  transition: $transition-base;
+  
+  &.is-active {
+    transform: translateX(200px);
+    
+    @media(max-width: 767px) {
+      transform: translateX(50%);
+    }
+  }
+}
