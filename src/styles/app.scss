@@ -2,10 +2,12 @@
 @import 'global/reset';
 
 // Base
+@import 'base/breakpoints';
+@import 'base/animation';
+@import 'base/spacing';
 @import 'base/colors';
 @import 'base/fonts';
 @import 'base/buttons';
-@import 'variables';
 @import 'base/core';
 @import 'base/typography';
 

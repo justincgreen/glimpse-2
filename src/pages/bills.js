@@ -30,10 +30,14 @@ export default function Home() {
       <main className="main">
         <Navigation />
         
-        <div className="page-wrapper">        
+        <div className="page-wrapper"> 
+          <Navicon />   
           <BillsBlock />
-          <BillsList />  
-          <Navicon />
+          
+          <section className="section__container">
+            <BillsList />  
+          </section>
+          
           <Footer />
         </div>
       </main>

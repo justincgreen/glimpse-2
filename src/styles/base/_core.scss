@@ -24,3 +24,15 @@ body {
     }
   }
 }
+
+.section {
+  &__container {
+    width: 60%;
+    margin: 0 auto;
+    
+    @media(max-width: $bp-small) {
+      width: auto;
+      margin: 0 20px;
+    }
+  }
+}
