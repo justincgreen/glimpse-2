@@ -1,5 +1,13 @@
 // Header component 
 .c-header {
-  font-size: $font-size-xxl;
   text-align: center;
+  
+  &__title {
+    font-size: $font-size-xxl;
+  }
+  
+  &__title-month {
+    display: block;
+    font-size: $font-size-xl;
+  }
 }

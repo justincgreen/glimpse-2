@@ -1,0 +1,8 @@
+// Bills block component 
+.c-bills-block {
+  text-align: center;
+  
+  &__title {
+    font-weight: $font-weight-300;
+  }
+}

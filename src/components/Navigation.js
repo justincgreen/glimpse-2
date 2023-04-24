@@ -24,7 +24,7 @@ const Navigation = () => {
           <Link href="/" onClick={closeNav}>Home</Link>
         </li>
         <li>
-          <Link href="/" onClick={closeNav}>Bills</Link>
+          <Link href="/bills" onClick={closeNav}>Bills</Link>
         </li>
       </ul>
     </nav>

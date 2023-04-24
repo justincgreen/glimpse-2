@@ -3,13 +3,15 @@ import { useState, createContext } from 'react';
 const GlobalContext = createContext(null);
 
 export const GlobalProvider = (props) => {
-  // Bills Balance
-  const [globalBillsBalance, setGlobalBillsBalance] = useState(0);
+  const [globalBillsBalance, setGlobalBillsBalance] = useState(2);
+  const [billTransactions, setBillTransactions] = useState([]);
   
   return (
     <GlobalContext.Provider value={{      
       globalBillsBalance,
-      setGlobalBillsBalance
+      setGlobalBillsBalance,
+      billTransactions,
+      setBillTransactions
     }}>
     {props.children}
     </GlobalContext.Provider>
