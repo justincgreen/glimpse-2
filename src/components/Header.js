@@ -11,7 +11,7 @@ const Header = () => {
     <header className="c-header">
       <span className="c-header__title">
         <span className="c-header__title-month">{currentMonth}</span>
-        ${globalBillsBalance}
+        ${ globalBillsBalance.toFixed(2) }
       </span>
     </header>
   )
