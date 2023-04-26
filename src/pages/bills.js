@@ -5,6 +5,7 @@ import Head from 'next/head'
 
 // Components
 import BillsBlock from '@/components/BillsBlock';
+import BillForm from '@/components/BillForm';
 import BillsList from '@/components/BillsList';
 import Footer from '@/components/Footer';
 import Navicon from '@/components/Navicon';
@@ -35,7 +36,21 @@ export default function Home() {
           <BillsBlock />
           
           <section className="section__container">
-            <BillsList />  
+            <div className="section__content">
+              <div className="button--group">
+                <button className="button button--primary">Add Bill</button>
+                <button className="button button--primary">Delete Bill</button>
+              </div>
+              
+              <BillForm />
+              {
+                billTransactions > 0
+                ?
+                <BillsList />
+                :
+                'There currently no bills'
+              }
+            </div>
           </section>
           
           <Footer />

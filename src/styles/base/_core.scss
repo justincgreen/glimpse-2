@@ -35,4 +35,8 @@ body {
       margin: 0 20px;
     }
   }
+  
+  &__content {
+    padding: $padding-base-half 0 $padding-base-quad;
+  }
 }

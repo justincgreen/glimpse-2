@@ -3,6 +3,7 @@ import GlobalContext from '@/context/GlobalContext';
 
 const BillsBlock = () => {
   const { 
+     globalBillsBalance,
      currentMonth
    } = useContext(GlobalContext);
    
@@ -11,7 +12,9 @@ const BillsBlock = () => {
       <h1 className="c-bills-block__title">
         { currentMonth } Bills
       </h1>
-      <span>Description: Bills total, list of bills and add bills form</span>
+      <h3 className="c-bills-block__amount">Total Amount: ${ globalBillsBalance }</h3>
+      <h4>Description: Bills total, list of bills and add bills form</h4>
+      <h4>Swap between bill form component and bills list component</h4>
     </header>
   )
 }

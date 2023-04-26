@@ -1,6 +1,57 @@
-// Buttons
+// Buttons 
 .button {
-  &--primary {
-    background-color: $button-primary;
+  background-color: $button-primary;
+  font-size: $font-size-xs;
+  padding: 0.75em 1em;
+  border-radius: 5px;
+  border: none;
+  color: $c-black;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: $button-hover;
+    transition: all 0.2s ease;
   }
+  
+  &:disabled {
+    cursor: not-allowed;
+    background-color: $button-disabled;
+    color: $button-disabled-text;
+  }
+  
+  &__close-modal {
+    background-color: transparent;
+    
+    svg {
+      path {
+        transition: all 0.2s ease; 
+      }      
+    }
+    
+    &:hover {
+      background-color: transparent;
+      
+      svg {
+        path {
+          fill: #E54141;
+        }
+      }
+    }
+  }
+  
+  &__badge {
+    padding: 0.5em;
+    background-color: $c-blue-med;
+    color: $t-white;
+    
+    &:hover {
+      background-color: $c-blue-dark;
+    }
+  }
+}
+
+.button--group {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
 }

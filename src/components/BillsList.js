@@ -1,7 +1,7 @@
 const BillsList = () => {
   return (
     <header className="c-bills-list">
-      <span>Bills List component</span>
+      <h2>Bills List component</h2>
     </header>
   )
 }
