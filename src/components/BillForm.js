@@ -15,7 +15,7 @@ const BillForm = () => {
    
   return (
     <h1>
-      Bill form component - show/hide based on clicking add bill button
+      Bill form component - TODO: ADD FORM
       <button className="button button--primary" onClick={toggleBillForm}>View Bills</button>
     </h1>
   )

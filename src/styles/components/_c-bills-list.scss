@@ -1,0 +1,30 @@
+// Bills List Component
+.c-bills-list {
+  margin-top: 20px;  
+}
+
+.c-bill-item {
+  flex-basis: 100%;
+  margin-top: 10px;
+  padding: 12px 30px 12px 10px;
+  background-color: $c-black-light;
+  border-radius: 5px;
+  border: 1px solid $c-black-lightest;
+  position: relative;
+  
+  &__timestamp {
+    font-size: $font-size-xxs;
+  }
+    
+  &__description {
+    font-weight: bold;
+  }
+  
+  &__amount {
+    margin-left: 5px;
+    padding: .1em .4em;
+    background-color: $c-red;
+    border-radius: 5px;
+    font-size: $font-size-xs;
+  }
+}

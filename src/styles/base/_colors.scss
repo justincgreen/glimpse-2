@@ -3,7 +3,7 @@ $c-blue: #55d4da;
 $c-blue-med: #0190d4;
 $c-blue-dark: #0075ad;
 $c-green: #00a862;
-$c-red: #ff4c47;
+$c-red: #c3312d;
 $c-yellow: #ffc600;
 
 // Neutral UI Colors
@@ -14,7 +14,7 @@ $c-black-lightest: #555252;
 
 // Text colors
 $t-green: #00ff06;
-$t-red: #ff4c47;
+$t-red: $c-red;
 $t-yellow: $c-yellow;
 
 // Neutral text colors

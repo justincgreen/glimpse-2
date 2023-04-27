@@ -5,7 +5,7 @@ const GlobalContext = createContext(null);
 
 export const GlobalProvider = (props) => {
   const [globalBillsBalance, setGlobalBillsBalance] = useState(2);
-  const [billTransactions, setBillTransactions] = useState([]);
+  const [billTransactions, setBillTransactions] = useState([{id: 1, description: 'Description', amount: 100, timestamp: '4-26-23'}]);
   const [currentMonth, setCurrentMonth] = useState(getCurrentMonth);
   
   // Display Bill Form

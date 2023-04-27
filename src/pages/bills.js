@@ -55,7 +55,7 @@ export default function Home() {
               }
               
               {
-                billTransactions > 0
+                billTransactions.length > 0
                 ?
                 <BillsList />
                 :
