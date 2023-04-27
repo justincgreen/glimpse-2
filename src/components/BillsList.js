@@ -8,24 +8,27 @@ const BillsList = () => {
    } = useContext(GlobalContext);
    
   return (
-    <div className="c-bills-list">
+    <>
       {
         billTransactions.length > 0
         ?
-        billTransactions.map((bill) => {
-          return (
-            <div className="c-bill-item" key={bill.id}>
-              <div className="c-bill-item__timestamp">{bill.timestamp}</div>
-              <span className="c-bill-item__description">{bill.description}</span>
-              <span className="c-bill-item__amount">${bill.amount}</span>
-            </div>
-          )
-        })
+        <div className="c-bills-list">
+          {
+            billTransactions.map((bill) => {
+              return (
+                <div className="c-bill-item" key={bill.id}>
+                  <div className="c-bill-item__timestamp">{bill.timestamp}</div>
+                  <span className="c-bill-item__description">{bill.description}</span>
+                  <span className="c-bill-item__amount">${bill.amount}</span>
+                </div>
+              )
+            })
+          }
+        </div>
         :
         null
-      }
-      
-    </div>
+      }      
+    </>
   )
 }
 
