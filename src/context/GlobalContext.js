@@ -8,6 +8,9 @@ export const GlobalProvider = (props) => {
   const [billTransactions, setBillTransactions] = useState([]);
   const [currentMonth, setCurrentMonth] = useState(getCurrentMonth);
   
+  // Display Bill Form
+  const [displayBillForm, setDisplayBillForm] = useState(false);
+  
   return (
     <GlobalContext.Provider value={{      
       globalBillsBalance,
@@ -15,7 +18,9 @@ export const GlobalProvider = (props) => {
       billTransactions,
       setBillTransactions,
       currentMonth,
-      setCurrentMonth
+      setCurrentMonth,
+      displayBillForm,
+      setDisplayBillForm
     }}>
     {props.children}
     </GlobalContext.Provider>

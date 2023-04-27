@@ -5,6 +5,7 @@ import Head from 'next/head'
 
 // Components
 import BillsBlock from '@/components/BillsBlock';
+import BillControls from '@/components/BillControls';
 import BillForm from '@/components/BillForm';
 import BillsList from '@/components/BillsList';
 import Footer from '@/components/Footer';
@@ -16,7 +17,8 @@ export default function Home() {
      globalBillsBalance,
      setGlobalBillsBalance,
      billTransactions,
-     setBillTransactions
+     setBillTransactions,
+     displayBillForm
    } = useContext(GlobalContext);
    
   return (
@@ -37,12 +39,21 @@ export default function Home() {
           
           <section className="section__container">
             <div className="section__content">
-              <div className="button--group">
-                <button className="button button--primary">Add Bill</button>
-                <button className="button button--primary">Delete Bill</button>
-              </div>
+               {
+                 !displayBillForm
+                 ?
+                 <BillControls />
+                 :
+                 null
+               }
+              {
+                displayBillForm
+                ?
+                <BillForm />
+                :
+                null
+              }
               
-              <BillForm />
               {
                 billTransactions > 0
                 ?
