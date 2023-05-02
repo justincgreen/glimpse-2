@@ -34,12 +34,24 @@ const BillForm = () => {
     setFormDate(e.target.value);
   }
   
-  const captureFormData = (e) => {
-    //setDisableSubmitBtn(true);
+  const captureFormData = (e) => {    
     e.preventDefault();
-    console.log(formDescription)
-    console.log(formAmount)
-    console.log(formDate)
+    const billDescription = document.querySelector('.c-bill-form__input--description');
+    const billAmount = document.querySelector('.c-bill-form__input--amount');
+    const billDueDate = document.querySelector('.c-bill-form__input--date');
+    const formInputs = document.querySelectorAll('.c-bill-form__input');
+    
+    if(billDescription.value === '' || billAmount.value === '' || billDueDate.value === '') {
+      alert('Enter a bill description, amount and due date');
+    } else {
+      formInputs.forEach(input => input.value = ''); // Clear input fields on submit
+      setDisableSubmitBtn(true);
+      console.log(formDescription)
+      console.log(formAmount)
+      console.log(formDate) 
+      
+      // need handle transaction (bill) function to call  
+    }                 
   }
   
   const renderForm = () => {
