@@ -10,26 +10,47 @@ const BillForm = () => {
   } = useContext(GlobalContext);
   
   const [disableSubmitBtn, setDisableSubmitBtn] = useState(false);
+  const [formDescription, setFormDescription] = useState('');
+  const [formAmount, setFormAmount] = useState(0);
+  const [formDate, setFormDate] = useState('');
   
   // Toggle bill form 
   const toggleBillForm = () => {
     setDisplayBillForm(!displayBillForm);
   }
   
-  // Capture form data
-  const captureFormData = () => {
-    setDisableSubmitBtn(true);
+  //---------------------------------------------------------------------------------------
+  
+  // Capture form data functions
+  const captureFormDescription = (e) => {
+    setFormDescription(e.target.value);
+  }
+  
+  const captureFormAmount = (e) => {
+    setFormAmount(e.target.value);
+  }
+  
+  const captureFormDate = (e) => {
+    setFormDate(e.target.value);
+  }
+  
+  const captureFormData = (e) => {
+    //setDisableSubmitBtn(true);
+    e.preventDefault();
+    console.log(formDescription)
+    console.log(formAmount)
+    console.log(formDate)
   }
   
   const renderForm = () => {
     return (
       <form className="c-bill-form__form">
         <label className="c-bill-form__label">Description</label>
-        <input type="text" placeholder="Enter description" className="c-bill-form__input c-bill-form__input--description" />        
+        <input type="text" placeholder="Enter description" className="c-bill-form__input c-bill-form__input--description" onChange={captureFormDescription} />        
         <label className="c-bill-form__label">Amount</label>
-        <input type="number" min="0" placeholder="Enter Amount" className="c-bill-form__input c-bill-form__input--amount" />
+        <input type="number" min="0" placeholder="Enter Amount" className="c-bill-form__input c-bill-form__input--amount" onChange={captureFormAmount} />
         <label className="c-bill-form__label">Due Date</label>
-        <input type="date" className="c-bill-form__input c-bill-form__input--date" />
+        <input type="date" className="c-bill-form__input c-bill-form__input--date" onChange={captureFormDate} />
         {
           disableSubmitBtn 
           ?
