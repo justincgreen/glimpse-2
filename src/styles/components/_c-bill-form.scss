@@ -1,0 +1,20 @@
+// Bill form component
+.c-bill-form {
+  &__upper {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0.5em;
+  }
+  
+  &__label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  &__input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 100%;
+  }
+}
