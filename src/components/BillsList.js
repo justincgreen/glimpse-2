@@ -26,7 +26,7 @@ const BillsList = () => {
           }
         </div>
         :
-        null
+        'There are currently no bills'
       }      
     </>
   )

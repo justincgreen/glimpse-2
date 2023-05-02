@@ -39,28 +39,20 @@ export default function Home() {
           
           <section className="section__container">
             <div className="section__content">
-               {
-                 !displayBillForm
-                 ?
-                 <BillControls />
-                 :
-                 null
-               }
-              {
-                displayBillForm
-                ?
-                <BillForm />
-                :
-                null
-              }
-              
-              {
-                billTransactions.length > 0
-                ?
-                <BillsList />
-                :
-                'There currently no bills'
-              }
+          {
+            !displayBillForm
+            ?
+            <BillControls />
+            :
+            null
+          }
+          {
+          displayBillForm
+          ?
+          <BillForm />
+          :
+          <BillsList />
+          }            
             </div>
           </section>
           
