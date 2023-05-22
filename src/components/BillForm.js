@@ -1,5 +1,7 @@
 import { useState, useContext } from 'react';
 import GlobalContext from '@/context/GlobalContext';
+import{ generateID } from '@/helpers/generateID';
+import{ currentDate } from '@/helpers/currentDate';
 
 const BillForm = () => {
   const { 
@@ -17,6 +19,30 @@ const BillForm = () => {
   // Toggle bill form 
   const toggleBillForm = () => {
     setDisplayBillForm(!displayBillForm);
+  }
+  
+  //---------------------------------------------------------------------------------------
+  
+  // Transaction flow
+  const handleTransaction = () => {
+    const formattedDate = new Date(formDate).toLocaleDateString('en-US', {
+      timeZone: 'UTC',
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    });
+    
+    const currentTransaction = {
+      id: generateID(),
+      description: formDescription,
+      amount: formAmount,
+      dueDate: formattedDate,
+      timestamp: currentDate()
+    }
+    
+    // Add new transaction to main bill transactions array
+    const newTransaction = [...billTransactions, currentTransaction];
+    setBillTransactions(newTransaction);
   }
   
   //---------------------------------------------------------------------------------------
@@ -50,7 +76,14 @@ const BillForm = () => {
       console.log(formAmount)
       console.log(formDate) 
       
-      // need handle transaction (bill) function to call  
+      // Handle transaction
+      handleTransaction();
+      
+      // Add success message, enable submit button after success message clears
+      setTimeout(() => {
+        setDisableSubmitBtn(false);
+      }, 500)
+
     }                 
   }
   

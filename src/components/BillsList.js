@@ -20,6 +20,7 @@ const BillsList = () => {
                   <div className="c-bill-item__timestamp">{bill.timestamp}</div>
                   <span className="c-bill-item__description">{bill.description}</span>
                   <span className="c-bill-item__amount">${bill.amount}</span>
+                  <span className="c-bill-item__due-date">Due date: {bill.dueDate}</span>
                 </div>
               )
             })
