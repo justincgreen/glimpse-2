@@ -15,6 +15,7 @@ const BillControls = () => {
   
   const deleteBillTransactions = () => {
     setBillTransactions([]);
+    localStorage.setItem('local-bill-transactions', '[]');
   }
    
   return (

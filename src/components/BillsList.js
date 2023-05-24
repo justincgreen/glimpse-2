@@ -1,5 +1,7 @@
 import { useContext } from 'react';
 import GlobalContext from '@/context/GlobalContext';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import EditIcon from '@mui/icons-material/Edit';
 
 const BillsList = () => {
   const { 
@@ -21,6 +23,22 @@ const BillsList = () => {
                   <span className="c-bill-item__description">{bill.description}</span>
                   <span className="c-bill-item__amount">${bill.amount}</span>
                   <span className="c-bill-item__due-date">Due date: {bill.dueDate}</span>
+                  <span className="c-bill-item__delete" onClick={
+                    () => {
+                      alert('deleted - hook up');
+                      //deleteExpenseModal(item.id, item.amount)
+                    }
+                  }>
+                    <DeleteForeverIcon sx={{ color: '#ff4e4e', fontSize: '28px' }} />
+                  </span>
+                  <span className="c-bill-item__edit" onClick={
+                    () => {
+                      alert('edited - hook up');
+                      //editExpense(item.id, item.description, item.amount)
+                    }
+                  }>
+                    <EditIcon sx={{ color: '#55d4da', fontSize: '28px' }} />
+                  </span>
                 </div>
               )
             })

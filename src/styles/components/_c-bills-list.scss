@@ -37,4 +37,12 @@
     font-weight: 500;
     font-size: $font-size-xs;    
   }
+  
+  &__delete {
+    cursor: pointer;
+  }
+  
+  &__edit {
+    cursor: pointer;
+  }
 }

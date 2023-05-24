@@ -1,4 +1,13 @@
 // Bill form component
+
+// Animations
+@keyframes fade-up {
+  to {
+    top: 50%;
+    opacity: 1;
+  }
+}
+
 .c-bill-form {
   &__upper {
     display: flex;
@@ -16,5 +25,24 @@
     padding: 10px;
     margin-bottom: 10px;
     font-size: 100%;
+  }
+  
+  &__success-message {
+    background-color: rgba(0,0,0, 0.7);
+    position: fixed; 
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+  }
+  
+  &__success-message-inner {
+    animation: fade-up 500ms ease forwards;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
   }
 }

@@ -1,5 +1,6 @@
-import { useState, createContext } from 'react';
+import { useEffect, useState, createContext } from 'react';
 import{ getCurrentMonth } from '@/helpers/getCurrentMonth';
+import{ hydrateBillTransactions } from '@/helpers/hydrateBillTransactions';
 
 const GlobalContext = createContext(null);
 
@@ -11,6 +12,14 @@ export const GlobalProvider = (props) => {
   
   // Display Bill Form
   const [displayBillForm, setDisplayBillForm] = useState(false);
+  
+  useEffect(() => {
+    // Local storage hydration 
+    // At the moment there is a flash of the previous state(s) before using the useEffect method to re-render the new states,
+    // This is due to the current method of app hydration
+    //-----------------------------
+    setBillTransactions(hydrateBillTransactions);
+  }, []);
   
   return (
     <GlobalContext.Provider value={{      

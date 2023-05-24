@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import GlobalContext from '@/context/GlobalContext';
 import{ generateID } from '@/helpers/generateID';
 import{ currentDate } from '@/helpers/currentDate';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const BillForm = () => {
   const { 
@@ -15,6 +16,7 @@ const BillForm = () => {
   const [formDescription, setFormDescription] = useState('');
   const [formAmount, setFormAmount] = useState(0);
   const [formDate, setFormDate] = useState('');
+  const [successMsg, setSuccessMsg] = useState(false);
   
   // Toggle bill form 
   const toggleBillForm = () => {
@@ -40,9 +42,10 @@ const BillForm = () => {
       timestamp: currentDate()
     }
     
-    // Add new transaction to main bill transactions array
+    // Add new transaction to main bill transactions array & local storage
     const newTransaction = [...billTransactions, currentTransaction];
     setBillTransactions(newTransaction);
+    localStorage.setItem('local-bill-transactions', JSON.stringify(newTransaction));
   }
   
   //---------------------------------------------------------------------------------------
@@ -79,11 +82,14 @@ const BillForm = () => {
       // Handle transaction
       handleTransaction();
       
+      // Success message
+      setSuccessMsg(true);
+      
       // Add success message, enable submit button after success message clears
       setTimeout(() => {
         setDisableSubmitBtn(false);
-      }, 500)
-
+        setSuccessMsg(false);
+      }, 1500);
     }                 
   }
   
@@ -106,6 +112,17 @@ const BillForm = () => {
       </form>
     )
   }
+  
+  const renderSuccess = () => {
+    return (
+      <div className="c-bill-form__success-message">
+        <div className="c-bill-form__success-message-inner">
+          <CheckCircleIcon sx={{ color: '#03e084', fontSize: '100px' }} />
+          <h2>Success</h2>
+        </div>
+      </div>
+    )
+  }
    
   return (
     <>
@@ -116,7 +133,11 @@ const BillForm = () => {
       
       {
         renderForm()
-      }      
+      }
+      
+      {
+        successMsg ? renderSuccess() : null
+      }     
     </>
   )
 }
