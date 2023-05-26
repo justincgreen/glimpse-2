@@ -10,9 +10,14 @@ const BillsList = () => {
     setBillTransactions
    } = useContext(GlobalContext);              
     
-  const toggleSettings = (e) => {
-    // targeting `.c-bill-item__icons-popover` element
-    e.currentTarget.nextElementSibling.classList.add('is-active');
+  const toggleSettings = (e) => {        
+    e.currentTarget.nextElementSibling.classList.add('is-active'); // targeting `.c-bill-item__icons-popover` element
+  }
+  
+  const removePopoverOverlay = (e) => {
+    if(e.target.classList.contains('c-bill-item__icons-popover')) {
+      e.target.classList.remove('is-active'); 
+    }    
   }
   
   return (
@@ -32,17 +37,17 @@ const BillsList = () => {
                   
                   <div className="c-bill-item__icons">
                     <span className="c-bill-item__icons-settings" onClick={toggleSettings}>    
-                      <SettingsIcon sx={{ color: '#fff', fontSize: '28px' }} /> 
+                      <SettingsIcon sx={{ color: '#fff', fontSize: '24px' }} /> 
                     </span>
                     
-                    <div className="c-bill-item__icons-popover">                               
+                    <div className="c-bill-item__icons-popover" onClick={removePopoverOverlay}>                               
                       <span className="c-bill-item__delete" onClick={
                         () => {
                           alert('deleted - hook up');
                           //deleteExpenseModal(item.id, item.amount)
                         }
                       }>
-                        <DeleteForeverIcon sx={{ color: '#ff4e4e', fontSize: '28px' }} />
+                        <DeleteForeverIcon sx={{ color: '#ff4e4e', fontSize: '24px' }} />
                       </span>
                       <span className="c-bill-item__edit" onClick={
                         () => {
@@ -50,15 +55,14 @@ const BillsList = () => {
                           //editExpense(item.id, item.description, item.amount)
                         }
                       }>
-                        <EditIcon sx={{ color: '#55d4da', fontSize: '28px' }} />
-                      </span>
-                    </div>                  
-                    
-                  </div>
+                        <EditIcon sx={{ color: '#55d4da', fontSize: '24px' }} />
+                      </span>                                            
+                    </div>                                                                             
+                  </div>                                                      
                 </div>
               )
             })
-          }
+          }          
         </div>
         :
         'There are currently no bills'

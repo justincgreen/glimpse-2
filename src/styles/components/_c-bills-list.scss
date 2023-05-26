@@ -8,7 +8,7 @@
 
 .c-bill-item {
   margin-top: 10px;
-  padding: 12px 10px;
+  padding: 12px;
   background-color: $c-black-light;
   border-radius: 5px;
   border: 1px solid $c-black-lightest;
@@ -41,10 +41,23 @@
   }
   
   &__icons {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
+    display: flex;
+    justify-content: flex-end;
+    
+    // position: absolute;
+    // top: 50%;
+    // right: 10px;
+    // transform: translateY(-50%);
+    // z-index: 2;
+    
+    @media(max-width: $bp-small) {
+      display: flex;
+      justify-content: flex-end;
+      position: relative;
+      top: 0;
+      right: 0;
+      transform: translateY(0);
+    }
   }
   
   &__icons-settings {
@@ -59,6 +72,17 @@
     right: 0;
     opacity: 0;
     visibility: hidden;
+    z-index: 2;    
+    
+    &::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: -1;
+    }    
     
     &.is-active {
       opacity: 1;
