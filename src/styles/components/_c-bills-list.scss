@@ -41,9 +41,29 @@
   }
   
   &__icons {
-    margin-top: 10px;
-    display: flex;
-    justify-content: flex-end;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+  }
+  
+  &__icons-settings {
+    cursor: pointer;
+  }
+  
+  &__icons-popover {
+    width: 60px;
+    background: #fff;
+    position: absolute;
+    top: 0px;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    
+    &.is-active {
+      opacity: 1;
+      visibility: visible;
+    } 
   }
   
   &__delete {
