@@ -1,2 +1,17 @@
 // Transition 
 $transition-base: all 0.2s ease;
+
+// Animations
+@keyframes fade-up {
+  to {
+    top: 50%;
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+

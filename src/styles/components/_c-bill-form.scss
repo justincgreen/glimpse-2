@@ -1,13 +1,4 @@
 // Bill form component
-
-// Animations
-@keyframes fade-up {
-  to {
-    top: 50%;
-    opacity: 1;
-  }
-}
-
 .c-bill-form {
   &__upper {
     display: flex;

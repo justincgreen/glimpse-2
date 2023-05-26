@@ -13,6 +13,10 @@ export const GlobalProvider = (props) => {
   // Display Bill Form
   const [displayBillForm, setDisplayBillForm] = useState(false);
   
+  // Modal
+  const [displayModal, setDisplayModal] = useState(false);  
+  const [deleteSingleBillForm, setDeleteSingleBillForm] = useState(false);  
+  
   useEffect(() => {
     // Local storage hydration 
     // At the moment there is a flash of the previous state(s) before using the useEffect method to re-render the new states,
@@ -30,7 +34,11 @@ export const GlobalProvider = (props) => {
       currentMonth,
       setCurrentMonth,
       displayBillForm,
-      setDisplayBillForm
+      setDisplayBillForm,
+      displayModal,
+      setDisplayModal,
+      deleteSingleBillForm,
+      setDeleteSingleBillForm
     }}>
     {props.children}
     </GlobalContext.Provider>

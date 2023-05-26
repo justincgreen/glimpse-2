@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import GlobalContext from '@/context/GlobalContext';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
@@ -7,7 +7,11 @@ import SettingsIcon from '@mui/icons-material/Settings';
 const BillsList = () => {
   const { 
     billTransactions,
-    setBillTransactions
+    setBillTransactions,
+    displayModal,
+    setDisplayModal,
+    deleteSingleBillForm,
+    setDeleteSingleBillForm
    } = useContext(GlobalContext);              
     
   const toggleSettings = (e) => {        
@@ -18,6 +22,12 @@ const BillsList = () => {
     if(e.target.classList.contains('c-bill-item__icons-popover')) {
       e.target.classList.remove('is-active'); 
     }    
+  }
+  
+  // Modal functionality
+  const deleteBillModal = () => {
+    setDisplayModal(true);
+    setDeleteSingleBillForm(true);
   }
   
   return (
@@ -43,7 +53,7 @@ const BillsList = () => {
                     <div className="c-bill-item__icons-popover" onClick={removePopoverOverlay}>                               
                       <span className="c-bill-item__delete" onClick={
                         () => {
-                          alert('deleted - hook up');
+                          deleteBillModal();
                           //deleteExpenseModal(item.id, item.amount)
                         }
                       }>

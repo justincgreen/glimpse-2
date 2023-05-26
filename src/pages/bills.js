@@ -11,6 +11,7 @@ import BillsList from '@/components/BillsList';
 import Footer from '@/components/Footer';
 import Navicon from '@/components/Navicon';
 import Navigation from '@/components/Navigation';
+import Modal from '@/components/Modal';
 
 export default function Home() {
   const { 
@@ -18,7 +19,8 @@ export default function Home() {
      setGlobalBillsBalance,
      billTransactions,
      setBillTransactions,
-     displayBillForm
+     displayBillForm,
+     displayModal
    } = useContext(GlobalContext);
    
   return (
@@ -58,6 +60,10 @@ export default function Home() {
           
           <Footer />
         </div>
+        
+        {
+          displayModal ? <Modal /> : null
+        }
       </main>
     </>
   )
