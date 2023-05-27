@@ -63,6 +63,12 @@
   
   &__icons-settings {
     cursor: pointer;
+    
+    &:hover {
+      svg {
+        animation: rotate 500ms ease forwards;
+      }
+    }
   }
   
   &__icons-popover {

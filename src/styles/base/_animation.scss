@@ -15,3 +15,9 @@ $transition-base: all 0.2s ease;
   }
 }
 
+@keyframes rotate {
+  to {
+    transform: rotate(180deg);
+  }
+}
+
