@@ -33,8 +33,7 @@ const BillControls = () => {
         <button className="button button--primary" disabled>Delete All Bills</button>
         :
         <button className="button button--primary" onClick={deleteAllBillsModal}>Delete All Bills</button>
-      }
-      
+      }    
     </div>
   )
 }

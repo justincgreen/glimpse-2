@@ -20,7 +20,7 @@ const BillsList = () => {
    } = useContext(GlobalContext);
    
    //-----------------------------------------------------------------------------------------
-   // update global bills balance every time billsTransaction array gets updated
+   // Update global bills balance every time billsTransaction array gets updated
    useEffect(() => {
      const billsTotalAmount = () => {        
        const billSum = billTransactions.reduce((accumulator, objects) => {

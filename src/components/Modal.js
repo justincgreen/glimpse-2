@@ -87,7 +87,7 @@ const Modal = () => {
   const renderAllBillsForm = () => {
     return (
       <div className="c-modal__delete-all-bills-form">
-        <h3 className="c-modal__form-heading">Delete Bill?</h3>
+        <h3 className="c-modal__form-heading">Delete All Bills?</h3>
         <div className="button--group">
           <button className="button" onClick={deleteAllBills}>Yes</button>
           <button className="button" onClick={closeModal}>No</button>
