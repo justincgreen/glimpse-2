@@ -8,19 +8,20 @@ const BillControls = () => {
     displayBillForm,
     setDisplayBillForm,
     billTransactions,
-    setBillTransactions
+    setBillTransactions,
+    displayModal,
+    setDisplayModal,
+    deleteAllBillsForm,
+    setDeleteAllBillsForm
   } = useContext(GlobalContext);
    
   const toggleBillForm = () => {
     setDisplayBillForm(!displayBillForm);
   }
   
-  const deleteBillTransactions = () => {
-    // TODO - add modal functionality
-    setBillTransactions([]);
-    setGlobalBillsBalance(0);
-    localStorage.setItem('local-bill-transactions', '[]');
-    localStorage.setItem('local-bills-balance', '0');
+  const deleteAllBillsModal = () => {
+    setDisplayModal(true);
+    setDeleteAllBillsForm(true);
   }
    
   return (
@@ -31,7 +32,7 @@ const BillControls = () => {
         ?
         <button className="button button--primary" disabled>Delete All Bills</button>
         :
-        <button className="button button--primary" onClick={deleteBillTransactions}>Delete All Bills</button>
+        <button className="button button--primary" onClick={deleteAllBillsModal}>Delete All Bills</button>
       }
       
     </div>

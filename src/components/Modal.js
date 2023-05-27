@@ -13,13 +13,15 @@ const Modal = () => {
     setDisplayModal,
     deleteSingleBillForm,
     setDeleteSingleBillForm,
+    deleteAllBillsForm,
+    setDeleteAllBillsForm,
     isolatedBill,
     setIsolatedBill
    } = useContext(GlobalContext);
    
   //-----------------------------------------------------------------------------------------
   
-  // Delete Single Bill Item 
+  // Delete single bill item 
   const deleteSingleBill = () => {
     const filterTransactions = billTransactions.filter((element) => {
       return element.id !== isolatedBill.id;		  
@@ -38,15 +40,33 @@ const Modal = () => {
     setDisplayModal(false);
     setDeleteSingleBillForm(false);
   }
+  
+  //-----------------------------------------------------------------------------------------
+  
+  // Delete all bill items
+  const deleteAllBills = () => {
+    setBillTransactions([]);
+    setGlobalBillsBalance(0);
+    localStorage.setItem('local-bill-transactions', '[]');
+    localStorage.setItem('local-bills-balance', '0');
+    setDisplayModal(false);
+    setDeleteAllBillsForm(false);
+  }
+  
+  //-----------------------------------------------------------------------------------------
    
   // Close modal
   const closeModal = () => {
     const activePopover = document.querySelector('.c-bill-item__icons-popover.is-active');
     
-    activePopover.classList.remove('is-active');
+    if(activePopover) {
+      activePopover.classList.remove('is-active');  
+    }
+    
     setIsolatedBill({}); // need to reset this state so new value can be used later
     setDisplayModal(false);
     setDeleteSingleBillForm(false);
+    setDeleteAllBillsForm(false);
   }
   
   //-----------------------------------------------------------------------------------------
@@ -58,6 +78,18 @@ const Modal = () => {
         <h3 className="c-modal__form-heading">Delete Bill?</h3>
         <div className="button--group">
           <button className="button" onClick={deleteSingleBill}>Yes</button>
+          <button className="button" onClick={closeModal}>No</button>
+        </div>
+      </div>
+    )
+  }
+  
+  const renderAllBillsForm = () => {
+    return (
+      <div className="c-modal__delete-all-bills-form">
+        <h3 className="c-modal__form-heading">Delete Bill?</h3>
+        <div className="button--group">
+          <button className="button" onClick={deleteAllBills}>Yes</button>
           <button className="button" onClick={closeModal}>No</button>
         </div>
       </div>
@@ -76,6 +108,10 @@ const Modal = () => {
         
         {
           deleteSingleBillForm ? renderSingleBillForm() : null
+        }
+        
+        {
+          deleteAllBillsForm ? renderAllBillsForm() : null
         }
       </div>
     </div>
