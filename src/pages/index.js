@@ -13,7 +13,7 @@ export default function Home() {
   const { 
      globalBillsBalance,
      setGlobalBillsBalance
-   } = useContext(GlobalContext);
+  } = useContext(GlobalContext);
    
   return (
     <>

@@ -32,8 +32,13 @@
     right: 0;
   }
   
+  &__form-heading {
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
   // Delete Single Bill Form
   &__delete-single-bill-form {
-    width: 300px;
+    //width: 300px;
   }
 }

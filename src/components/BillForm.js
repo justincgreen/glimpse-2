@@ -5,18 +5,26 @@ import{ currentDate } from '@/helpers/currentDate';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const BillForm = () => {
-  const { 
+  // Context
+  const {
+    globalBillsBalance,
+    setGlobalBillsBalance, 
     billTransactions,
     setBillTransactions,
     displayBillForm,
     setDisplayBillForm
   } = useContext(GlobalContext);
   
+  //---------------------------------------------------------------------------------------
+  
+  // Local state
   const [disableSubmitBtn, setDisableSubmitBtn] = useState(false);
   const [formDescription, setFormDescription] = useState('');
   const [formAmount, setFormAmount] = useState(0);
   const [formDate, setFormDate] = useState('');
   const [successMsg, setSuccessMsg] = useState(false);
+  
+  //---------------------------------------------------------------------------------------
   
   // Toggle bill form 
   const toggleBillForm = () => {
@@ -46,6 +54,11 @@ const BillForm = () => {
     const newTransaction = [...billTransactions, currentTransaction];
     setBillTransactions(newTransaction);
     localStorage.setItem('local-bill-transactions', JSON.stringify(newTransaction));
+    
+    // Add bill amount to global bills balance
+    const updatedGlobalBillsBalance = parseFloat(globalBillsBalance) + parseFloat(currentTransaction.amount);
+    setGlobalBillsBalance(updatedGlobalBillsBalance);
+    localStorage.setItem('local-bills-balance', JSON.stringify(updatedGlobalBillsBalance));
   }
   
   //---------------------------------------------------------------------------------------
@@ -75,9 +88,6 @@ const BillForm = () => {
     } else {
       formInputs.forEach(input => input.value = ''); // Clear input fields on submit
       setDisableSubmitBtn(true);
-      console.log(formDescription)
-      console.log(formAmount)
-      console.log(formDate) 
       
       // Handle transaction
       handleTransaction();
@@ -92,6 +102,8 @@ const BillForm = () => {
       }, 1500);
     }                 
   }
+  
+  //---------------------------------------------------------------------------------------
   
   const renderForm = () => {
     return (
@@ -123,6 +135,8 @@ const BillForm = () => {
       </div>
     )
   }
+  
+  //---------------------------------------------------------------------------------------
    
   return (
     <>

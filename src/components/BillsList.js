@@ -1,18 +1,41 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import GlobalContext from '@/context/GlobalContext';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
 import SettingsIcon from '@mui/icons-material/Settings';
 
 const BillsList = () => {
+  // Context
   const { 
+    globalBillsBalance,
+    setGlobalBillsBalance,
     billTransactions,
     setBillTransactions,
     displayModal,
     setDisplayModal,
     deleteSingleBillForm,
-    setDeleteSingleBillForm
-   } = useContext(GlobalContext);              
+    setDeleteSingleBillForm,
+    isolatedBill,
+    setIsolatedBill
+   } = useContext(GlobalContext);
+   
+   //-----------------------------------------------------------------------------------------
+   // update global bills balance every time billsTransaction array gets updated
+   useEffect(() => {
+     const billsTotalAmount = () => {        
+       const billSum = billTransactions.reduce((accumulator, objects) => {
+        return accumulator + parseFloat(objects.amount);
+       }, 0);
+       
+       if(billSum > 0) {
+         setGlobalBillsBalance(billSum);
+         localStorage.setItem('local-bills-balance', JSON.stringify(billSum));
+       }
+     }
+     billsTotalAmount();
+   }, [billTransactions]);
+   
+   //-----------------------------------------------------------------------------------------               
     
   const toggleSettings = (e) => {        
     e.currentTarget.nextElementSibling.classList.add('is-active'); // targeting `.c-bill-item__icons-popover` element
@@ -24,11 +47,16 @@ const BillsList = () => {
     }    
   }
   
+  //-----------------------------------------------------------------------------------------
+  
   // Modal functionality
-  const deleteBillModal = () => {
+  const deleteBillModal = (id, description, amount) => {
     setDisplayModal(true);
     setDeleteSingleBillForm(true);
+    setIsolatedBill({id, description, amount});
   }
+  
+  //-----------------------------------------------------------------------------------------
   
   return (
     <>
@@ -53,8 +81,7 @@ const BillsList = () => {
                     <div className="c-bill-item__icons-popover" onClick={removePopoverOverlay}>                               
                       <span className="c-bill-item__delete" onClick={
                         () => {
-                          deleteBillModal();
-                          //deleteExpenseModal(item.id, item.amount)
+                          deleteBillModal(bill.id, bill.description, bill.amount);
                         }
                       }>
                         <DeleteForeverIcon sx={{ color: '#ff4e4e', fontSize: '24px' }} />

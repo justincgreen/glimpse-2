@@ -3,6 +3,8 @@ import GlobalContext from '@/context/GlobalContext';
 
 const BillControls = () => {
   const { 
+    globalBillsBalance,
+    setGlobalBillsBalance,
     displayBillForm,
     setDisplayBillForm,
     billTransactions,
@@ -14,8 +16,11 @@ const BillControls = () => {
   }
   
   const deleteBillTransactions = () => {
+    // TODO - add modal functionality
     setBillTransactions([]);
+    setGlobalBillsBalance(0);
     localStorage.setItem('local-bill-transactions', '[]');
+    localStorage.setItem('local-bills-balance', '0');
   }
    
   return (

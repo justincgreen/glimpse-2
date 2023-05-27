@@ -1,12 +1,12 @@
 import { useEffect, useState, createContext } from 'react';
 import{ getCurrentMonth } from '@/helpers/getCurrentMonth';
+import{ hydrateBillsBalance } from '@/helpers/hydrateBillsBalance';
 import{ hydrateBillTransactions } from '@/helpers/hydrateBillTransactions';
 
 const GlobalContext = createContext(null);
 
 export const GlobalProvider = (props) => {
-  const [globalBillsBalance, setGlobalBillsBalance] = useState(2);
-  // const [billTransactions, setBillTransactions] = useState([{id: 1, description: 'Description', amount: 100, timestamp: '4-26-23'}]);
+  const [globalBillsBalance, setGlobalBillsBalance] = useState(0);
   const [billTransactions, setBillTransactions] = useState([]);
   const [currentMonth, setCurrentMonth] = useState(getCurrentMonth);
   
@@ -16,12 +16,14 @@ export const GlobalProvider = (props) => {
   // Modal
   const [displayModal, setDisplayModal] = useState(false);  
   const [deleteSingleBillForm, setDeleteSingleBillForm] = useState(false);  
+  const [isolatedBill, setIsolatedBill] = useState({});  
   
   useEffect(() => {
     // Local storage hydration 
     // At the moment there is a flash of the previous state(s) before using the useEffect method to re-render the new states,
     // This is due to the current method of app hydration
     //-----------------------------
+    setGlobalBillsBalance(hydrateBillsBalance);
     setBillTransactions(hydrateBillTransactions);
   }, []);
   
@@ -38,7 +40,9 @@ export const GlobalProvider = (props) => {
       displayModal,
       setDisplayModal,
       deleteSingleBillForm,
-      setDeleteSingleBillForm
+      setDeleteSingleBillForm,
+      isolatedBill,
+      setIsolatedBill
     }}>
     {props.children}
     </GlobalContext.Provider>

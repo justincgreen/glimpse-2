@@ -21,7 +21,7 @@ export default function Home() {
      setBillTransactions,
      displayBillForm,
      displayModal
-   } = useContext(GlobalContext);
+  } = useContext(GlobalContext);
    
   return (
     <>
