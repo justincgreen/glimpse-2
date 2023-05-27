@@ -3,6 +3,7 @@ import GlobalContext from '@/context/GlobalContext';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
 import SettingsIcon from '@mui/icons-material/Settings';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const BillsList = () => {
   // Context
@@ -45,6 +46,10 @@ const BillsList = () => {
     if(e.target.classList.contains('c-bill-item__icons-popover')) {
       e.target.classList.remove('is-active'); 
     }    
+  }
+  
+  const toggleBillPaid = () => {
+    alert('Bill Paid - Hook Up');
   }
   
   //-----------------------------------------------------------------------------------------
@@ -93,7 +98,10 @@ const BillsList = () => {
                         }
                       }>
                         <EditIcon sx={{ color: '#55d4da', fontSize: '24px' }} />
-                      </span>                                            
+                      </span>   
+                      <span className="c-bill-item__paid" onClick={toggleBillPaid}>
+                        <CheckCircleIcon sx={{ color: '#00b104', fontSize: '24px' }} />
+                      </span>                                         
                     </div>                                                                             
                   </div>                                                      
                 </div>

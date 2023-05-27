@@ -32,10 +32,7 @@
   
   &__due-date {
     display: block;
-    //padding: .1em .4em;
-    //background-color: $c-yellow;
     color: $c-yellow;
-    //border-radius: 5px;
     font-weight: 500;
     font-size: $font-size-xs;    
   }
@@ -44,21 +41,6 @@
     display: flex;
     justify-content: flex-end;
     position: relative;
-    
-    // position: absolute;
-    // top: 50%;
-    // right: 10px;
-    // transform: translateY(-50%);
-    // z-index: 2;
-    
-    // @media(max-width: $bp-small) {
-    //   display: flex;
-    //   justify-content: flex-end;
-    //   position: relative;
-    //   top: 0;
-    //   right: 0;
-    //   transform: translateY(0);
-    // }
   }
   
   &__icons-settings {
@@ -72,7 +54,8 @@
   }
   
   &__icons-popover {
-    width: 60px;
+    display: flex;
+    gap: .3em;
     background: #fff;
     position: absolute;
     top: 0px;
@@ -97,11 +80,9 @@
     } 
   }
   
-  &__delete {
-    cursor: pointer;
-  }
-  
-  &__edit {
+  &__delete,
+  &__edit,
+  &__paid {
     cursor: pointer;
   }
 }
