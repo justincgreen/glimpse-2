@@ -16,6 +16,8 @@ const BillsList = () => {
     setDisplayModal,
     deleteSingleBillForm,
     setDeleteSingleBillForm,
+    editBillForm,
+    setEditBillForm,
     isolatedBill,
     setIsolatedBill
    } = useContext(GlobalContext);
@@ -61,6 +63,12 @@ const BillsList = () => {
     setIsolatedBill({id, description, amount});
   }
   
+  const editBillModal = (id, description, amount) => {
+    setDisplayModal(true);
+    setEditBillForm(true);
+    setIsolatedBill({id, description, amount});
+  }  
+  
   //-----------------------------------------------------------------------------------------
   
   return (
@@ -92,9 +100,8 @@ const BillsList = () => {
                         <DeleteForeverIcon sx={{ color: '#ff4e4e', fontSize: '24px' }} />
                       </span>
                       <span className="c-bill-item__edit" onClick={
-                        () => {
-                          alert('edited - hook up');
-                          //editExpense(item.id, item.description, item.amount)
+                        () => {                          
+                          editBillModal(bill.id, bill.description, bill.amount)
                         }
                       }>
                         <EditIcon sx={{ color: '#55d4da', fontSize: '24px' }} />

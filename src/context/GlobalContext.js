@@ -17,6 +17,7 @@ export const GlobalProvider = (props) => {
   const [displayModal, setDisplayModal] = useState(false);  
   const [deleteSingleBillForm, setDeleteSingleBillForm] = useState(false);  
   const [deleteAllBillsForm, setDeleteAllBillsForm] = useState(false);  
+  const [editBillForm, setEditBillForm] = useState(false);  
   const [isolatedBill, setIsolatedBill] = useState({});  
   
   useEffect(() => {
@@ -44,6 +45,8 @@ export const GlobalProvider = (props) => {
       setDeleteSingleBillForm,
       deleteAllBillsForm,
       setDeleteAllBillsForm,
+      editBillForm,
+      setEditBillForm,
       isolatedBill,
       setIsolatedBill
     }}>

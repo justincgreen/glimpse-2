@@ -36,4 +36,17 @@
     font-weight: bold;
     margin-bottom: 20px;
   }
+  
+  &__form-label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  // Edit bill form
+  &__edit-bill-input {
+    display: block;
+    margin: 0 auto 10px auto;
+    padding: $padding-base-half;
+    font-size: 100%;
+  }
 }
