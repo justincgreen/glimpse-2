@@ -63,10 +63,10 @@ const BillsList = () => {
     setIsolatedBill({id, description, amount});
   }
   
-  const editBillModal = (id, description, amount) => {
+  const editBillModal = (id, description, amount, dueDate) => {
     setDisplayModal(true);
     setEditBillForm(true);
-    setIsolatedBill({id, description, amount});
+    setIsolatedBill({id, description, amount, dueDate});
   }  
   
   //-----------------------------------------------------------------------------------------
@@ -101,7 +101,7 @@ const BillsList = () => {
                       </span>
                       <span className="c-bill-item__edit" onClick={
                         () => {                          
-                          editBillModal(bill.id, bill.description, bill.amount)
+                          editBillModal(bill.id, bill.description, bill.amount, bill.dueDate)
                         }
                       }>
                         <EditIcon sx={{ color: '#55d4da', fontSize: '24px' }} />
