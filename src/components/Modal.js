@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import GlobalContext from '@/context/GlobalContext';
 import CancelIcon from '@mui/icons-material/Cancel';
 
@@ -21,13 +21,26 @@ const Modal = () => {
     setIsolatedBill
    } = useContext(GlobalContext);
    
-   //-----------------------------------------------------------------------------------------
+   //-----------------------------------------------------------------------------------------           
    
    // Isolated component states
    const [editBillDescription, setEditBillDescription] = useState(isolatedBill.description);
    const [editBillAmount, setEditBillAmount] = useState(isolatedBill.amount);
    const [editBillDueDate, setEditBillDueDate] = useState(isolatedBill.dueDate);
    
+  //-----------------------------------------------------------------------------------------
+  
+  useEffect(() => {
+    // Revert date format from isolatedBill.dueDate property when available 
+    // so the date can be populated into the date field for editing the bill item 
+    // our original saved dueDate property was reformatted already to this 'May 30, 2023'
+    // now it must be reformatted back to '2023-05-30' to display properly in the input date field in this case
+    if(isolatedBill.dueDate) {
+      const revertedDateFormat = new Date(isolatedBill.dueDate).toISOString().slice(0, 10);
+      setEditBillDueDate(revertedDateFormat);
+    }     
+  }, [isolatedBill]);
+  
   //-----------------------------------------------------------------------------------------
   
   // Close modal
@@ -92,15 +105,21 @@ const Modal = () => {
   
   const captureBillDueDate = (e) => {
     setEditBillDueDate(e.target.value);
-  }
+  }    
   
-  const saveUpdatedBill = () => {    
-   // Update object, updateBill function returns a new array
-   // TODO: Need to add the ability to edit the due date - need to revert dueDate to match default calendar ouput and then resave back
-   // to reformatted version so take May 30, 2023 into 2023-5-30 and back into this format May 30, 2023
-   // also add dueDate.editBillDueDate property to below
+  const saveUpdatedBill = () => {       
+   // Reformat '2023-5-30' to this desired format 'May 30, 2023'
+   const formattedDate = new Date(editBillDueDate).toLocaleDateString('en-US', {
+     timeZone: 'UTC',
+     day: 'numeric',
+     month: 'long',
+     year: 'numeric'
+   });
+   
+   // updateBill function returns a new array from billTransactions 
+   // while updating a specific object based on the id and adding new properties to it
    const updateBill= billTransactions.map((obj) => {
-    return obj.id === isolatedBill.id ? { ...obj, description: editBillDescription, amount: editBillAmount } : obj 
+    return obj.id === isolatedBill.id ? { ...obj, description: editBillDescription, amount: editBillAmount, dueDate: formattedDate} : obj 
    });
    
    // Save updated bill transactions array
@@ -112,7 +131,7 @@ const Modal = () => {
       if(isolatedBill.amount === editBillAmount) { // which means the amount hasn't been changed, close modal
         closeModal();
       }
-      else if(isolatedBill.amount !== editBillAmount){
+      else if(isolatedBill.amount !== editBillAmount){ // if the amounts are different update it
         // Add the transactions objects amounts together to get the updated globalBillsBalance amount
         // https://bobbyhadz.com/blog/javascript-get-sum-of-array-object-values
         const sum = updateBill.reduce((accumulator, objects) => {
@@ -165,7 +184,8 @@ const Modal = () => {
         <input type="type" placeholder="Enter Description" className="c-modal__edit-bill-input" onChange={captureBillDescription} value={editBillDescription} />
         <label className="c-modal__form-label">Amount</label>
         <input type="number" min="0" placeholder="Enter Amount" className="c-modal__edit-bill-input" onChange={captureBillAmount} value={editBillAmount} />
-        {/* <input type="date" placeholder="Enter Date" className="c-modal__edit-bill-input" onChange={captureBillDueDate} value={editBillDueDate} /> */}
+        <label className="c-modal__form-label">Due Date</label>
+        <input type="date" className="c-modal__edit-bill-input" onChange={captureBillDueDate} value={editBillDueDate} />
         <button className="button" onClick={saveUpdatedBill}>Save</button>
       </div>
     )
