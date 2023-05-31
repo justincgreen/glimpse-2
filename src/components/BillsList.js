@@ -88,7 +88,7 @@ const BillsList = () => {
                 <div className={ bill.paid ? 'c-bill-item is-paid' : 'c-bill-item'} key={bill.id}>
                   {/* <div className="c-bill-item__timestamp">{bill.timestamp}</div> */}
                   <span className="c-bill-item__due-date">Due date: {bill.dueDate}</span>                  
-                  <span className="c-bill-item__description">{bill.description}</span>
+                  <div className="c-bill-item__description">{bill.description}</div>
                   <span className="c-bill-item__amount">${bill.amount}</span>
                   {
                     bill.paid ? <span className="c-bill-item__status-paid">Paid</span> : null

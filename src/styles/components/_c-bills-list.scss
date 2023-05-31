@@ -7,7 +7,7 @@
 }
 
 .c-bill-item {
-  margin-top: 10px;
+  margin-top: 1.25rem;
   padding: 12px;
   background-color: $c-black-light;
   border-radius: 5px;
@@ -19,11 +19,11 @@
   // }
     
   &__description {
+    margin: 10px 0;
     font-weight: bold;
   }
   
   &__amount {
-    margin-left: 5px;
     padding: .1em .4em;
     background-color: $c-red;
     border-radius: 5px;
@@ -88,7 +88,7 @@
   
   // Bill item status 
   &.is-paid {
-    box-shadow: 0 0px 3px 1px #00fe08;
+    box-shadow: 0 0px 3px 1px $t-green;
   }
   
   &__status-paid {
