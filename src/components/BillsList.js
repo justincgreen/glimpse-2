@@ -18,6 +18,8 @@ const BillsList = () => {
     setDeleteSingleBillForm,
     editBillForm,
     setEditBillForm,
+    billPaidForm,
+    setBillPaidForm,
     isolatedBill,
     setIsolatedBill
    } = useContext(GlobalContext);
@@ -49,19 +51,7 @@ const BillsList = () => {
     if(e.target.classList.contains('c-bill-item__icons-popover')) {
       e.target.classList.remove('is-active'); 
     }    
-  }
-  
-  const toggleBillPaid = (e) => {
-    //console.log(e.currentTarget.closest('.c-bill-item'));
-    e.currentTarget.closest('.c-bill-item').classList.add('is-paid');
-    
-    // Add bill paid success message
-    
-    // Need to update paid property to true
-    // also need to modify 'c-bill-item' to check if paid property is true, if it is add is-paid class on render
-    
-    // close settings popover
-  }
+  }    
   
   //-----------------------------------------------------------------------------------------
   
@@ -76,7 +66,13 @@ const BillsList = () => {
     setDisplayModal(true);
     setEditBillForm(true);
     setIsolatedBill({id, description, amount, dueDate});
-  }  
+  }
+  
+  const billPaidModal = (id, description, paid) => {
+    setDisplayModal(true);
+    setBillPaidForm(true);
+    setIsolatedBill({id, description, paid});       
+  }
   
   //-----------------------------------------------------------------------------------------
   
@@ -89,11 +85,14 @@ const BillsList = () => {
           {
             [...billTransactions].reverse().map((bill) => {
               return (
-                <div className="c-bill-item" key={bill.id}>
+                <div className={ bill.paid ? 'c-bill-item is-paid' : 'c-bill-item'} key={bill.id}>
                   {/* <div className="c-bill-item__timestamp">{bill.timestamp}</div> */}
-                  <span className="c-bill-item__due-date">Due date: {bill.dueDate}</span>
+                  <span className="c-bill-item__due-date">Due date: {bill.dueDate}</span>                  
                   <span className="c-bill-item__description">{bill.description}</span>
                   <span className="c-bill-item__amount">${bill.amount}</span>
+                  {
+                    bill.paid ? <span className="c-bill-item__status-paid">Paid</span> : null
+                  }
                   
                   <div className="c-bill-item__icons">
                     <span className="c-bill-item__icons-settings" onClick={toggleSettings}>    
@@ -115,7 +114,11 @@ const BillsList = () => {
                       }>
                         <EditIcon sx={{ color: '#55d4da', fontSize: '24px' }} />
                       </span>   
-                      <span className="c-bill-item__icon-paid" onClick={toggleBillPaid}>
+                      <span className="c-bill-item__icon-paid" onClick={
+                        () => {
+                         billPaidModal(bill.id, bill.description, bill.paid);
+                        }
+                      }>
                         <CheckCircleIcon sx={{ color: '#00b104', fontSize: '24px' }} />
                       </span>                                         
                     </div>                                                                             

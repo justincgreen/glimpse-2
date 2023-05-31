@@ -17,6 +17,8 @@ const Modal = () => {
     setDeleteAllBillsForm,
     editBillForm,
     setEditBillForm,
+    billPaidForm,
+    setBillPaidForm,
     isolatedBill,
     setIsolatedBill
    } = useContext(GlobalContext);
@@ -56,6 +58,7 @@ const Modal = () => {
     setDeleteSingleBillForm(false);
     setDeleteAllBillsForm(false);
     setEditBillForm(false);
+    setBillPaidForm(false);
   }
   
   //-----------------------------------------------------------------------------------------
@@ -150,6 +153,35 @@ const Modal = () => {
   }
   
   //-----------------------------------------------------------------------------------------
+  
+  // Bill Paid Form
+  const setBillPaid = () => {                         
+    const updateBill= billTransactions.map((obj) => {
+      return obj.id === isolatedBill.id ? { ...obj, paid: true} : obj 
+    });          
+    
+    // Save updated bill transactions array
+    setBillTransactions(updateBill);
+    localStorage.setItem('local-bill-transactions', JSON.stringify(updateBill));
+    
+    // Close Modal
+    closeModal();
+  }
+  
+  const unsetBillPaid = () => {                         
+    const updateBill= billTransactions.map((obj) => {
+      return obj.id === isolatedBill.id ? { ...obj, paid: false} : obj 
+    });          
+    
+    // Save updated bill transactions array
+    setBillTransactions(updateBill);
+    localStorage.setItem('local-bill-transactions', JSON.stringify(updateBill));
+    
+    // Close Modal
+    closeModal();
+  }
+  
+  //-----------------------------------------------------------------------------------------
    
   // Render form functions
   const renderSingleBillForm = () => {
@@ -188,6 +220,18 @@ const Modal = () => {
         <input type="date" className="c-modal__edit-bill-input" onChange={captureBillDueDate} value={editBillDueDate} />
         <button className="button" onClick={saveUpdatedBill}>Save</button>
       </div>
+    )        
+  }
+  
+  const renderBillPaidForm = () => {
+    return (
+      <div className="c-modal__bill-paid-form">
+        <h3 className="c-modal__form-heading">Mark bill as paid?</h3>
+        <div className="button--group">
+          <button className="button" onClick={setBillPaid}>Yes</button>
+          <button className="button" onClick={unsetBillPaid}>No</button>
+        </div>
+      </div>
     )
   }
   
@@ -211,6 +255,10 @@ const Modal = () => {
         
         {
           editBillForm ? renderEditBillForm() : null
+        }
+        
+        {
+          billPaidForm ? renderBillPaidForm() : null
         }
       </div>
     </div>

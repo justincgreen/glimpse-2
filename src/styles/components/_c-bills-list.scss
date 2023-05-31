@@ -88,6 +88,14 @@
   
   // Bill item status 
   &.is-paid {
-    box-shadow: 0 0px 8px 0px #67ff6c;
+    box-shadow: 0 0px 3px 1px #00fe08;
+  }
+  
+  &__status-paid {
+    margin-left: 5px;
+    padding: .1em .4em;
+    background-color: $c-blue-dark;
+    border-radius: 5px;
+    font-size: $font-size-xs;
   }
 }
