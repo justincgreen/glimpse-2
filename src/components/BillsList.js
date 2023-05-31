@@ -38,10 +38,11 @@ const BillsList = () => {
      billsTotalAmount();
    }, [billTransactions]);
    
-   //-----------------------------------------------------------------------------------------               
-    
+   //-----------------------------------------------------------------------------------------    
+   
+   // Utility functions               
   const toggleSettings = (e) => {        
-    e.currentTarget.nextElementSibling.classList.add('is-active'); // targeting `.c-bill-item__icons-popover` element
+    e.currentTarget.nextElementSibling.classList.add('is-active'); // targeting `.c-bill-item__icons-popover` element and displaying it
   }
   
   const removePopoverOverlay = (e) => {
@@ -50,8 +51,16 @@ const BillsList = () => {
     }    
   }
   
-  const toggleBillPaid = () => {
-    alert('Bill Paid - Hook Up');
+  const toggleBillPaid = (e) => {
+    //console.log(e.currentTarget.closest('.c-bill-item'));
+    e.currentTarget.closest('.c-bill-item').classList.add('is-paid');
+    
+    // Add bill paid success message
+    
+    // Need to update paid property to true
+    // also need to modify 'c-bill-item' to check if paid property is true, if it is add is-paid class on render
+    
+    // close settings popover
   }
   
   //-----------------------------------------------------------------------------------------
@@ -92,21 +101,21 @@ const BillsList = () => {
                     </span>
                     
                     <div className="c-bill-item__icons-popover" onClick={removePopoverOverlay}>                               
-                      <span className="c-bill-item__delete" onClick={
+                      <span className="c-bill-item__icon-delete" onClick={
                         () => {
                           deleteBillModal(bill.id, bill.description, bill.amount);
                         }
                       }>
                         <DeleteForeverIcon sx={{ color: '#ff4e4e', fontSize: '24px' }} />
                       </span>
-                      <span className="c-bill-item__edit" onClick={
+                      <span className="c-bill-item__icon-edit" onClick={
                         () => {                          
                           editBillModal(bill.id, bill.description, bill.amount, bill.dueDate)
                         }
                       }>
                         <EditIcon sx={{ color: '#55d4da', fontSize: '24px' }} />
                       </span>   
-                      <span className="c-bill-item__paid" onClick={toggleBillPaid}>
+                      <span className="c-bill-item__icon-paid" onClick={toggleBillPaid}>
                         <CheckCircleIcon sx={{ color: '#00b104', fontSize: '24px' }} />
                       </span>                                         
                     </div>                                                                             

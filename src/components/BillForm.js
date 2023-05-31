@@ -47,6 +47,7 @@ const BillForm = () => {
       description: formDescription,
       amount: formAmount,
       dueDate: formattedDate,
+      paid: false,
       timestamp: currentDate()
     }
     

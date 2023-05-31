@@ -80,9 +80,14 @@
     } 
   }    
   
-  &__delete,
-  &__edit,
-  &__paid {
+  &__icon-delete,
+  &__icon-edit,
+  &__icon-paid {
     cursor: pointer;
+  }
+  
+  // Bill item status 
+  &.is-paid {
+    box-shadow: 0 0px 8px 0px #67ff6c;
   }
 }
