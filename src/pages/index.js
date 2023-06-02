@@ -33,7 +33,7 @@ export default function Home() {
         data: billAmounts,
         label: '$',
         backgroundColor: generateRandomColors(billAmounts.length)
-      },
+      }
     ]
   };
    
