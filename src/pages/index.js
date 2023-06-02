@@ -9,11 +9,33 @@ import Footer from '@/components/Footer';
 import Navicon from '@/components/Navicon';
 import Navigation from '@/components/Navigation';
 
+// Chart
+import { Chart as ChartJS } from 'chart.js/auto';
+import { Pie } from "react-chartjs-2";
+
+// Helpers
+import{ generateRandomColors } from '@/helpers/generateRandomColors';
+
 export default function Home() {
   const { 
      globalBillsBalance,
-     setGlobalBillsBalance
+     setGlobalBillsBalance,
+     billTransactions
   } = useContext(GlobalContext);
+    
+  const billAmounts = billTransactions.map(bill => bill.amount);
+  const billDescriptions = billTransactions.map(bill => bill.description);
+          
+  const chartData = {
+    labels: billDescriptions,
+    datasets: [
+      {
+        data: billAmounts,
+        label: '$',
+        backgroundColor: generateRandomColors(billAmounts.length)
+      },
+    ]
+  };
    
   return (
     <>
@@ -30,6 +52,10 @@ export default function Home() {
         <div className="page-wrapper">        
           <Header />          
           <Navicon />
+          
+          <div className="chart-wrapper">
+            <Pie data={chartData} />
+          </div>
           <Footer />
         </div>
       </main>

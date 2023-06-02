@@ -40,3 +40,12 @@ body {
     padding: $padding-base-half 0 $padding-base-quad;
   }
 }
+
+.chart-wrapper {
+  width: 30%;
+  margin: 20px auto;
+  
+  @media(max-width: $bp-small) {
+    width: 80%;
+  }
+}
