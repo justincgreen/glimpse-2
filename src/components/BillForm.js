@@ -120,7 +120,7 @@ const BillForm = () => {
           ?
           <button className="button" disabled>Add Expense</button>
           :
-          <button className="button" onClick={captureFormData}>Add Expense</button>
+          <button className="button" onClick={captureFormData}>Add Bill</button>
         }
       </form>
     )

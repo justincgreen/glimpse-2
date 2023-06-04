@@ -96,7 +96,7 @@ const BillsList = () => {
                   
                   <div className="c-bill-item__icons">
                     <span className="c-bill-item__icons-settings" onClick={toggleSettings}>    
-                      <SettingsIcon sx={{ color: '#fff', fontSize: '28px' }} /> 
+                      <SettingsIcon sx={{ color: '#fff', fontSize: '30px' }} /> 
                     </span>
                     
                     <div className="c-bill-item__icons-popover" onClick={removePopoverOverlay}>                               
@@ -105,21 +105,21 @@ const BillsList = () => {
                           deleteBillModal(bill.id, bill.description, bill.amount);
                         }
                       }>
-                        <DeleteForeverIcon sx={{ color: '#ff4e4e', fontSize: '24px' }} />
+                        <DeleteForeverIcon sx={{ color: '#ff4e4e', fontSize: '30px' }} />
                       </span>
                       <span className="c-bill-item__icon-edit" onClick={
                         () => {                          
                           editBillModal(bill.id, bill.description, bill.amount, bill.dueDate)
                         }
                       }>
-                        <EditIcon sx={{ color: '#55d4da', fontSize: '24px' }} />
+                        <EditIcon sx={{ color: '#55d4da', fontSize: '30px' }} />
                       </span>   
                       <span className="c-bill-item__icon-paid" onClick={
                         () => {
                          billPaidModal(bill.id, bill.description, bill.paid);
                         }
                       }>
-                        <CheckCircleIcon sx={{ color: '#00b104', fontSize: '24px' }} />
+                        <CheckCircleIcon sx={{ color: '#00b104', fontSize: '30px' }} />
                       </span>                                         
                     </div>                                                                             
                   </div>                                                      
@@ -129,7 +129,7 @@ const BillsList = () => {
           }          
         </div>
         :
-        'There are currently no bills'
+        <div className="c-bills-list__empty-message">There are currently no bills</div>
       }      
     </>
   )

@@ -4,6 +4,12 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   column-gap: 1.25rem;
   margin-top: 20px;  
+  
+  &__empty-message {
+    text-align: center;
+    margin-top: 30px;
+    font-size: $font-size-md;
+  }
 }
 
 .c-bill-item {
