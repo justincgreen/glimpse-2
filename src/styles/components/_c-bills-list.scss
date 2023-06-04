@@ -62,11 +62,15 @@
     gap: .3em;
     background: #fff;
     position: absolute;
-    top: 0px;
+    top: 0;
     right: 0;
     opacity: 0;
     visibility: hidden;
-    z-index: 2;    
+    z-index: 2;  
+    
+    @media(max-width: $bp-small) {
+      top: 3px;
+    }  
     
     &::before {
       content: '';
