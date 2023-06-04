@@ -9,10 +9,10 @@ const Header = () => {
    
   return (
     <header className="c-header">
-      <span className="c-header__title">
+      <h1 className="c-header__title">
         <span className="c-header__title--month">{currentMonth} Bills</span>
         <span className="c-header__title--amount">${ globalBillsBalance.toFixed(2) }</span>
-      </span>
+      </h1>
     </header>
   )
 }

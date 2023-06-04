@@ -31,6 +31,8 @@ export default function Home() {
   const chartOptions = {
     plugins: {  
       legend: {
+        position: 'bottom', // workaround for label spacing
+        title: { display: true, padding: 15 }, // workaround for label spacing
         labels: {
           color: 'white',
           font: {

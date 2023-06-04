@@ -13,6 +13,7 @@
   border-radius: 5px;
   border: 1px solid $c-black-lightest;
   position: relative;
+  transition: $transition-base;
     
   &__description {
     margin: 10px 0;
