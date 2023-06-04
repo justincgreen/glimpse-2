@@ -40,10 +40,9 @@ export default function Home() {
           }
         }
       }
-    },
-    responsive: true
+    }
   }
-          
+  
   const chartData = {
     labels: billDescriptions,
     datasets: [
