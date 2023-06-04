@@ -32,9 +32,10 @@ export default function Home() {
     plugins: {  
       legend: {
         position: 'bottom', // workaround for label spacing
-        title: { display: true, padding: 15 }, // workaround for label spacing
+        title: { display: true, padding: 10 }, // workaround for label spacing
         labels: {
           color: 'white',
+          boxWidth: 15,
           font: {
             size: 16
           }
