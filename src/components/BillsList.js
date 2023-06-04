@@ -96,7 +96,7 @@ const BillsList = () => {
                   
                   <div className="c-bill-item__icons">
                     <span className="c-bill-item__icons-settings" onClick={toggleSettings}>    
-                      <SettingsIcon sx={{ color: '#fff', fontSize: '24px' }} /> 
+                      <SettingsIcon sx={{ color: '#fff', fontSize: '28px' }} /> 
                     </span>
                     
                     <div className="c-bill-item__icons-popover" onClick={removePopoverOverlay}>                               

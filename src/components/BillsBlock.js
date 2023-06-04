@@ -10,7 +10,7 @@ const BillsBlock = () => {
   return (
     <header className="c-bills-block">
       <h1 className="c-bills-block__title">
-        { currentMonth } Bills
+        { currentMonth } Bills List
       </h1>
       <h3 className="c-bills-block__amount">Total Amount: ${ globalBillsBalance.toFixed(2) }</h3>
     </header>

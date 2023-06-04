@@ -13,10 +13,6 @@
   border-radius: 5px;
   border: 1px solid $c-black-lightest;
   position: relative;
-  
-  // &__timestamp {
-  //   font-size: $font-size-xxs;
-  // }
     
   &__description {
     margin: 10px 0;
@@ -41,6 +37,7 @@
     display: flex;
     justify-content: flex-end;
     position: relative;
+    margin-top: 5px;
   }
   
   &__icons-settings {

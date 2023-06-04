@@ -7,14 +7,14 @@ body {
 }
 
 .page-wrapper {
-  padding-top: 3em;
+  padding-top: 3rem;
   background-color: $c-black;
   color: $c-white;
   min-height: 100vh;
   position: relative;
   z-index: 2;
   box-shadow: -11px 0 5px -5px rgba(0,0,0,.2);
-  transition: $transition-base;
+  transition: $transition-base;    
   
   &.is-active {
     transform: translateX(200px);
@@ -42,10 +42,12 @@ body {
 }
 
 .chart-wrapper {
-  width: 30%;
+  width: 500px;
+  height: 500px;
   margin: 20px auto;
   
   @media(max-width: $bp-small) {
-    width: 80%;
+    width: 90%;
+    height: auto;
   }
 }

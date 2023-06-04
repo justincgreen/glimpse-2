@@ -2,12 +2,14 @@
 .c-header {
   text-align: center;
   
-  &__title {
-    font-size: $font-size-xl;
-  }
-  
-  &__title-month {
-    display: block;
-    font-size: $font-size-xl;
-  }
+  &__title {     
+    &--month {
+      display: block;
+      font-size: $font-size-xl;
+    }
+    
+    &--amount {
+      color: $t-yellow;
+    }
+  }    
 }

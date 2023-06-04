@@ -25,6 +25,22 @@ export default function Home() {
     
   const billAmounts = billTransactions.map(bill => bill.amount);
   const billDescriptions = billTransactions.map(bill => bill.description);
+  
+  //---------------------------------------------------------------------------------------
+  
+  const chartOptions = {
+    plugins: {  
+      legend: {
+        labels: {
+          color: 'white',
+          font: {
+            size: 16
+          }
+        }
+      }
+    },
+    responsive: true
+  }
           
   const chartData = {
     labels: billDescriptions,
@@ -35,7 +51,9 @@ export default function Home() {
         backgroundColor: generateRandomColors(billAmounts.length)
       }
     ]
-  };
+  }; 
+  
+  //---------------------------------------------------------------------------------------   
    
   return (
     <>
@@ -54,7 +72,7 @@ export default function Home() {
           <Navicon />
           
           <div className="chart-wrapper">
-            <Pie data={chartData} />
+            <Pie options={chartOptions} data={chartData} />
           </div>
           <Footer />
         </div>
