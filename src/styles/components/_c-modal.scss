@@ -45,8 +45,15 @@
   // Edit bill form
   &__edit-bill-input {
     display: block;
+    height: 43px;
     margin: 0 auto 10px auto;
     padding: $padding-base-half;
     font-size: 100%;
+    border: 1px solid #b6b6b6;
+    appearance: none;
+    
+    @media(max-width: $bp-small) {
+      width: 100%;
+    }
   }
 }
