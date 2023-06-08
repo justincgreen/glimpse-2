@@ -26,6 +26,9 @@ const Navigation = () => {
         <li>
           <Link href="/bills" onClick={closeNav}>Bills</Link>
         </li>
+        <li>
+          <Link href="https://budget-tracker-2-next.vercel.app" onClick={closeNav}>Budget Tracker</Link>
+        </li>        
       </ul>
     </nav>
   )
