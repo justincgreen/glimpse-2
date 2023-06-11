@@ -38,24 +38,25 @@ export default function Home() {
         <div className="page-wrapper"> 
           <Navicon />   
           <BillsBlock />
-          
+        
           <section className="section__container">
             <div className="section__content">
-          {
-            !displayBillForm
-            ?
-            <BillControls />
-            :
-            null
-          }
-          {
-          displayBillForm
-          ?
-          <BillForm />
-          :
-          <BillsList />
-          }            
-            </div>
+              {
+                !displayBillForm
+                ?
+                <BillControls />
+                :
+                null
+              }
+              
+              {
+              displayBillForm
+                ?
+                <BillForm />
+                :
+                <BillsList />
+              }            
+            </div>                        
           </section>
           
           <Footer />
